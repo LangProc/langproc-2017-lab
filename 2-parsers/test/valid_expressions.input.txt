@@ -1,0 +1,22 @@
+0,0
+-10.5,-10.5
+x,x
+xx,xx
+  acbsddfs,acbsddfs
+x+y,( x + y )
+x + y,( x + y )
+ x+y,( x + y )
+0 + y,( 0 + y )
+x *  1 + x,( ( x * 1 ) + x )
+x - 1 + x,( ( x - 1 ) + x )
+x*x+x*x+x*x,( ( ( x * x ) + ( x * x ) ) + ( x * x ) )
+x*(x+x*x+x)*x,( ( x * ( ( x + ( x * x ) ) + x ) ) * x )
+x*(y+x*x*y+x)*y,( ( x * ( ( y + ( ( x * x ) * y ) ) + x ) ) * y )
+x*(y+x*x*y+x+3.1)*y,( ( x * ( ( ( y + ( ( x * x ) * y ) ) + x ) + 3.1 ) ) * y )
+log(x),log( x )
+exp(-2),exp( -2 )
+exp(z) * sqrt( log(1.0/x) ),( exp( z ) * sqrt( log( ( 1 / x ) ) ) )
+x*4/x*10+11/22*1-x+zzzz-     4,( ( ( ( ( ( ( x * 4 ) / x ) * 10 ) + ( ( 11 / 22 ) * 1 ) ) - x ) + zzzz ) - 4 )
+1/(x+1/(x+1/(x+y))),( 1 / ( x + ( 1 / ( x + ( 1 / ( x + y ) ) ) ) ) )
+x- 1,( x - 1 )
+x- -1,( x - -1 )

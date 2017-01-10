@@ -1,0 +1,13 @@
+*.tab.cpp
+*.tab.hpp
+*.yy.cpp
+*.got.txt
+
+bin/*
+*.o
+*.output
+*.log
+
+*.DS_Store
+
+.vagrant
