@@ -4,8 +4,8 @@ equivalent code for a simple infinite-register ISA.
 Input language
 ==============
 
-The input language provides a basic set of expression, which
-support statements and expressions. A simple example which
+The input language provides a basic set of constructs, which
+support both statements and expressions. A simple example which
 prints the numbers from 10 down to 1 is:
 
     Seq [
@@ -59,12 +59,12 @@ Input programs can contain the following constructs:
 - Variable: `variable`
 
   A variable matches the regeg `[a-z][a-z0-9]*. It returns the value of the variable,
-  where must already have been given a value elsewhere in the program.
+  which must already have been given a value elsewhere in the program.
   
 - Input: `Input`
 
   Reads an integer from the input stream of numbers and returns it. Note that it
-  is not an indentifier because it is not lower-case.
+  is not an variable because it is not lower-case.
   
 - Output: `Output [ X ]`
 
@@ -105,6 +105,8 @@ Input programs can contain the following constructs:
   
 Notice that the language has the property that _all_ constructs
 return a value, so everything can be considered to be an expression.
+However, any expression can also have side-effects, i.e. it could
+modify a variable.
  
 There are a number of input programs in `test/programs/*/in.code.txt`,
 which perform some simple calculations. If you mentally
@@ -115,7 +117,7 @@ Data representation
 
 The language is designed to have an extremely lightweight and
 direct mapping to an AST, which allows for a very simple lexer
-and parser. The entire parser is contained in [src/ast_parser.cpp](src/ast_parser.cpp),
+and parser. The entire parser is contained in [src/ast_parse.cpp](src/ast_parse.cpp),
 which contains:
 
 - `Tokenise` : Turns an input character stream into a sequence of
@@ -135,6 +137,9 @@ tree node has:
 We'll use the following representation:
 
 - Tree of type "xyz", with no value or branches.
+    ````
+    xyz
+    ````
 
 - Tree of type "x" with value "y", and no branches.
     ````
@@ -159,9 +164,15 @@ We'll use the following representation:
 
 This representation is similar to the approach taken in
 JSON or XML, where there is a general-purpose heirarchical data-structure,
-and meaning is imposed onto it. This approach is also taken
+then meaning is imposed onto it at a higher level. In this
+case, there are many ASTs which are syntactically correct,
+but not match the grammar of the language constructs.
+This approach is also taken
 in [homoiconic](https://en.wikipedia.org/wiki/Homoiconicity) languages,
 such as Lisp, Clojure and Julia, where code-is-data-is-code.
+As with such languages, a dis-advantage is that we don't
+discover that an AST is mal-formed at parse-time - it only
+becomes apparent when we try to work with the tree.
 
 Meta-comment on data-structures
 -------------------------------
@@ -221,7 +232,7 @@ to a number of different input programs in `test/programs`, and
 checks that the outputs and results are correct.
 
 
-Base Part 2 (30%): Code generation
+Basic Part 2 (30%): Code generation
 ==================================
 
 The file `src/vm.cpp` implements a simple virtual
@@ -276,7 +287,7 @@ beq one one top
 :bottom
 halt zero
 ````
-The program stops copying when an input is reached.
+The program stops copying when an input of 0 is encountered.
 
 Problem
 -------
@@ -298,11 +309,15 @@ Intermediate : Code analysis (20%)
 
 Compiler passes are often implemented as stages, and in
 modern compilers may even be separate programs that read
-in one representation of the program and write out a new
-one. In our language it is particularly easy to read in 
-the AST, modify it, then write it back out again.
+in one representation of the program, then write out a
+transformed program at the same level. 
+In our language it is particularly easy to read in 
+the AST, modify it, then write it back out again,
+This kind of source-to-source optimisation process is quite
+different to the classic lower-ing process, where we go from
+C++ to C, or C to Assembly.
 
-Implement three basic compiler analysis:
+Implement three basic compiler optimisation passes:
 
 - `bin/constant_fold` : An arithmetic constant folder, which
    optimises operators where both arguments are constants.
@@ -438,7 +453,7 @@ Seq [
   Assign : x [ 10 ]
   Assign : y [ 20 ]
   Assign : z [ 30 ]
-  If [ 20
+  If [ 30
     Output [ 10 ]
     Assign : x [ 0 ]
   ]
@@ -532,7 +547,7 @@ $
 Some observations:
 
 - You'll need to use a MIPS toolchain to do some parts of it (e.g.
-  assemblying linking)
+  assembling and linking)
 
 - The MIPS executable will only run if you have QEMU installed (or
   you're on a MIPS machine!)
@@ -545,6 +560,7 @@ Some observations:
   code generation. The main advantage here is that the set of code
   constructs and types is much smaller than in C.
 
+- Generating MIPS assembly is not the only way of getting an executable...
 
 Submission
 ==========

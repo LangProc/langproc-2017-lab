@@ -4,10 +4,10 @@ each of which has a separate sub-directory. When
 working on each component, you should be working in
 the relevant sub-directory (`a`, `b`, or `c`).
 
-Initial setup
-=============
+Initial repository setup
+========================
 
-Get the local working copy of your repository:
+Get the local working copy of your private repository:
 ````
 git clone https://github.com/LangProc/langproc-2016-lab-${LOGIN}.git
 ````
@@ -18,7 +18,10 @@ Move into the working directory:
 cd langproc-2016-lab-${LOGIN}
 ````
 
-If you create a file `X/Y.Z`, and you want it to be tracked:
+### Adding files to the repository
+
+Eventually you'll create files, and want them to be tracked
+in the repository. So if you create a file `X/Y.Z`, and you want it to be tracked:
 ````
 git add X/Y.Z
 ````
@@ -28,7 +31,10 @@ git add -i
 ````
 which allows you to select from the currently untracked files.
 
-When you want to capture the current state of the repository:
+### Commits
+
+When you reach particular milestones, or levels of functionality,
+you should make a _commit_:
 ````
 git commit -a -m "Comment about commit"
 ````
@@ -36,7 +42,10 @@ The `-a` tells it to "stage" (include) all the tracked files
 into the commit. The message after `-m` should summarise what
 has changed.
 
-When you want to push the committed changes back to github:
+### Synchronising with your private GitHub repository
+
+When you want to push the committed changes from your loval
+repository back to github:
 ````
 git push origin
 ````
@@ -49,6 +58,8 @@ editing on two machines):
 ````
 git pull origin
 ````
+
+### Sychronising with the specification repository
 
 If there are any changes to the master specification (e.g.
 bugs or updates), you can incorporate them into your
@@ -71,6 +82,8 @@ If you have changed a file that also changed in the master,
 then you may need to commit locally first. Look carefully
 at any incoming changes due to the pull, and make sure you
 want to accept them.
+
+### General git comments
 
 You are free to include any files you wish in your repository,
 such as notes or partial versions. However, try not check in
@@ -189,7 +202,7 @@ are:
   Notice that it tries to test for specific circumstances and possible failure
   mores, before moving onto more general tests.
   
-- [test/out](a_test/out) : The "golden" output for the give input files, which
+- [test/out](a_test/ref) : The "golden" output for the give input files, which
   your program should match. There is one output for each input.
 
 - [test_lexer.sh](a/test_lexer.sh) : A [bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) script which
@@ -225,7 +238,7 @@ group, and so on. For example, the replacement string:
 \1,\2
 ````
 would output the two groups separated by a comma. Given the
-following input and the combination of pattern and replacement
+following input and the above combination of pattern and replacement
 strings, the output would be:
 
 Input       | Output
@@ -316,13 +329,13 @@ while( std::getline(std::cin, tmp) ){
 }
 ````
 
-The [<regex>](http://www.cplusplus.com/reference/regex/) library has a number
+The C++ [regex](http://www.cplusplus.com/reference/regex/) library has a number
 of modes and functions. Try to identify the function closest to the
 behaviour you want.
 
 We want replacement strings which match sed, which is not the default
 in the C++ library, which prefers [ECMAScript](http://www.cplusplus.com/reference/regex/ECMAScript/).
-However, it can be convinced to behave like sed if you read the documentation.
+However, it can be convinced to behave like sed if you read or search the documentation.
 
 It might help to develop a set of test regular expressions, and for each
 one create a few lines that match and a few that don't. You might wish
@@ -384,6 +397,7 @@ abb
 Match
 abab
 NoMatch
+````
 
 Suggestions
 -----------

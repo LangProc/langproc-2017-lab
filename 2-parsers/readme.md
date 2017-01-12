@@ -11,21 +11,21 @@ constraints on the input language are:
 
 - Operators are left-associative.
 
-- Brackets '(' and ')' can be used to override precedence.
+- Brackets `(` and `)` can be used to override [operator precedence](https://en.wikipedia.org/wiki/Order_of_operations).
 
 - _Functions_ to be supported are `sqrt`, `exp`, and `log`.
 
   - Functions have one parameter, which _must_ be surrounded by
     parenthesis.
 
-- _Numbers_ are expressed as decimal integers. These must
-  start with a decimal digit, and may or may not be
-  negative.
+- _Numbers_ are expressed as decimal numbers. These must
+  start with an integer digit, may have a fractional part,
+  and may be negative.
 
-- _Variables_ are sequences of lower-case alphanumeric
+- _Variables_ are sequences of lower-case alphabetic
   characters.
 
-- Apart from _operators_, _numbers_, and _variables_,
+- Apart from _operators_, _numbers_, _variables_, and _functions_,
   the only other characters will be white-space.
 
 Your task is to build an AST, with the AST definitions provided
@@ -40,8 +40,8 @@ through [ast.hpp](include/ast.hpp). The classes are:
 - [`Operator`](include/ast/ast_operators.hpp) : Sub-classes
   for representing mathematical binary operators.
 
-- [`Function`](include/ast/ast_operators.hpp) : Sub-classes
-  for representing unary function (log, expr, sqrt).
+- [`Function`](include/ast/ast_functions.hpp) : Sub-classes
+  for representing unary functions (`log`, `exp`, `sqrt`).
 
 Some properties of the AST are:
 
@@ -71,7 +71,8 @@ Your parser should complete the implemention of the function:
 const Expression *parseAST();
 ````
 which is declared in `ast_.hpp`, and defined in `parser.y`. This will parse the
-input from `stdin` (the default source for Bison), then return the AST.
+input from `stdin` (the default source for Flex, which is providing tokens to
+Bison), then return the AST.
 
 There is a program called `bin/print_canonical`, which will
 use the function `parseAST` to parse input, then print
@@ -82,7 +83,7 @@ The idea of a canonical form is that if two expressions are the same,
 they should print to the same string. Here that is true _except_ for the floating-point
 values, which are not printed to full precision. So for example, we might
 find that two expressions print to `( 4.1 + x )` and `( 4.1 + x )`, but one expression
-might be `(4.99999999 + x)', and the other could be `(4.1000000001 + x)`.
+might be `(4.99999999 + x)`, and the other could be `(4.1000000001 + x)`.
 
 
 Examples
@@ -183,9 +184,9 @@ $
 ````
 Here the parts are:
 - `$` : Command prompt of shell
-- `./eval_expr x 7` : Command typed into bash/shell
+- `bin/eval_expr x 7` : Command typed into bash/shell
 - `x+6` : Input typed into stdin
-- `13` : Output printed to stdout
+- `13.000000` : Output printed to stdout
 
 Another example:
 ````

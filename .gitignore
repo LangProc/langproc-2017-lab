@@ -7,6 +7,7 @@ bin/*
 *.o
 *.output
 *.log
+*.stackdump
 
 *.DS_Store
 

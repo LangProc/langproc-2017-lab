@@ -13,10 +13,10 @@ Each exercise is structured as:
   is a full test-bench included, which will also
   be used for assesment.
   
-- Intermediate (20%) : A slightly more challenging
+- Intermediate (20%) : Slightly more challenging
   exercises, with less support in terms of skeleton
   code and prompts. These are not designed to be
-  "hard" as such, just to require more thinking
+  "hard" as such, just to require a bit more thinking
   and independent work.
   
 - Advanced (20%) : A more complicated part which is
@@ -39,7 +39,7 @@ The three exercises are:
 
 The code for each exercise will be submitted via github,
 and the hash of the commit to be tested will be submitted
-via blackboard (see the notes in exercise 1).
+via blackboard (see the [notes in exercise 1](1-lexer/readme.md#Submission)).
 
 Assessment and Feedback
 =======================
@@ -67,6 +67,7 @@ Formative feedback is also available, from:
 - The course module leader
 - Your tutors
 - Your peers
+
 However, it is up to you to be pro-active and
 indicate what you want feedback on. If there
 is a test-case and you can't understand why
