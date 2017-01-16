@@ -68,7 +68,7 @@ else
     grep -q "Ubuntu 16.04" <(echo $RELEASE)
     FOUND=$?
 
-    if [[ $? -ne 0 ]]; then
+    if [[ $FOUND -ne 0 ]]; then
         echo ""
         echo "Warning: This appears not to be the target environment"
         echo "         Make sure you do a final run on a lab machine or an Ubuntu VM"
