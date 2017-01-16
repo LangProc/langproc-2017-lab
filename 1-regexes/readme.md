@@ -184,7 +184,7 @@ a a a aa -67  -80 -6780 for while
 ````
 The output would be:
 ````
--6785
+-6875
 "  x" 1
 "a" 2
 "aa" 1
