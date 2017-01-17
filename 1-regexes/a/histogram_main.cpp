@@ -32,7 +32,7 @@ int main()
             
         }else if(type==Word){
             // We have a string. The value is in a string
-            // _pointed to_ by yylval.stringValue. Note that
+            // _pointed to_ by yylval.wordValue. Note that
             // the string is allocated by the lexer, but
             // deallocated by us.
 
