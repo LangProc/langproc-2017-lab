@@ -25,7 +25,7 @@ for i in test/in/*.txt; do
 
     diff <(cat test/ref/$BASENAME.stdout.txt | dos2unix) <(cat test/out/$BASENAME.stdout.txt) > test/out/$BASENAME.diff.txt
     if [[ "$?" -ne "0" ]]; then
-        echo "\nERROR"
+        echo -e "\nERROR"
     else
         PASSED=$(( ${PASSED}+1 ));
     fi
