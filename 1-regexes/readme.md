@@ -186,7 +186,7 @@ The output would be:
 ````
 -6875
 "  x" 1
-"a" 2
+"a" 3
 "aa" 1
 "for" 1
 "while" 1
