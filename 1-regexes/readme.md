@@ -76,7 +76,7 @@ git remote -v
 You can now integrate changes from the spec remote by pulling
 from it:
 ````
-git remote pull spec
+git remote pull spec master
 ````
 If you have changed a file that also changed in the master,
 then you may need to commit locally first. Look carefully
