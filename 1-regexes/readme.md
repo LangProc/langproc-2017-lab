@@ -101,7 +101,7 @@ use as well the command line. They can make it easier to
 select files to be added and commited, but try to be
 selective about which files you add - don't just accept
 everything they suggest, otherwise they'll tend to
-include everything. 
+include everything.
 
 You may want to read the nodes on environments in the
 main [readme](../readme.md), if you're interested in
@@ -197,11 +197,11 @@ There is also a test-bench included, which is the complete
 assessment script for this part of the lab. The components
 are:
 
- 
+
 - [test/in](a/test/in) : A set of input test files of increasing complexity.
   Notice that it tries to test for specific circumstances and possible failure
   mores, before moving onto more general tests.
-  
+
 - [test/out](a_test/ref) : The "golden" output for the give input files, which
   your program should match. There is one output for each input.
 
@@ -209,10 +209,17 @@ are:
   runs the tests. It will build your program, then apply it to each input in turn
   to produce a file in `test/out`. It will then use [diff](https://en.wikipedia.org/wiki/Diff_utility)
   to work out whether the output matches the reference output.
-  
+
 You can run the program by doing (from within the `a` directory):
 ````
 ./test_lexer.sh
+````
+
+Note that the [unix execute permissions](https://en.wikipedia.org/wiki/Modes_(Unix))
+may have been lost, in which case you can indicate the script should be
+executable with:
+````
+chmod u+x ./test_lexer.sh
 ````
 
 Intermediate: C++ regexes (20%)
@@ -340,7 +347,7 @@ However, it can be convinced to behave like sed if you read or search the docume
 It might help to develop a set of test regular expressions, and for each
 one create a few lines that match and a few that don't. You might wish
 to adapt the test infrastructure from part `a` to help you, or create
-some other simple way of checking that your 
+some other simple way of checking that your
 
 Advanced: Regex implementation (20%)
 ====================================
