@@ -364,7 +364,13 @@ following features:
 - The program takes as an input argument an ASCII regular expression,
   which can contain the following constructs:
 
-  - Character literals (but not character ranges)
+  - Character literals (but not character ranges).
+  
+    - Character literals only include the alphabetic letters, numbers, and underscore,
+      so each literal must match `[a-zA-Z0-9_]`.
+    
+    - The dot construct will not appear, as it is syntactic sugar for a character
+      range containing all characters.
 
   - One-or-more (but not zero-or-more)
 
@@ -419,6 +425,8 @@ handle mis-matches? What happens if there are two alternatives to try?
 
 Once you have got the data-structure working, then think about parsing
 the regular expression into the data-structure.
+
+
 
 Submission
 ==========
