@@ -737,8 +737,8 @@ static void print_bad_pte(struct vm_area_struct *vma, unsigned long addr,
  *
  * In order to support COW of arbitrary special mappings, we have VM_MIXEDMAP.
  *
- * VM_MIXEDMAP mappings can likewise contain memory with or without "struct
- * page" backing, however the difference is that _all_ pages with a struct
+ * VM_MIXEDMAP mappings can likewise contain memory with or without "struct page"
+ * backing, however the difference is that _all_ pages with a struct
  * page (that is, those where pfn_valid is true) are refcounted and considered
  * normal pages by the VM. The disadvantage is that pages are refcounted
  * (which can be slower and simply not an option for some PFNMAP users). The
