@@ -426,7 +426,7 @@ handle mis-matches? What happens if there are two alternatives to try?
 Once you have got the data-structure working, then think about parsing
 the regular expression into the data-structure.
 
-
+You are free to use flex/bison if you want to for parsing the regular expression.
 
 Submission
 ==========
