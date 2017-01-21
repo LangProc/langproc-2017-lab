@@ -347,7 +347,7 @@ However, it can be convinced to behave like sed if you read or search the docume
 It might help to develop a set of test regular expressions, and for each
 one create a few lines that match and a few that don't. You might wish
 to adapt the test infrastructure from part `a` to help you, or create
-some other simple way of checking that your
+some other simple way of checking that your program works.
 
 Advanced: Regex implementation (20%)
 ====================================
