@@ -12,16 +12,16 @@ Each exercise is structured as:
   easy, using an existing code structure. There
   is a full test-bench included, which will also
   be used for assesment.
-  
+
 - Intermediate (20%) : Slightly more challenging
   exercises, with less support in terms of skeleton
   code and prompts. These are not designed to be
   "hard" as such, just to require a bit more thinking
   and independent work.
-  
+
 - Advanced (20%) : A more complicated part which is
   mainly for those wishing to challenge themselves.
-  
+
 The primary purpose of the lab sessions is to ensure
 that everyone learns the basic skills needed for the
 coursework. The intermediate and advanced parts are
@@ -31,11 +31,11 @@ is no fixed answer, so they can't tell you want it is.
 
 The three exercises are:
 
-1 - [Lexers and regular expressions](1-regexes) : Due 30th Jan at 22:00.
+1 - [Lexers and regular expressions](1-regexes) : Due 31st Jan at 22:00.
 
-2 - [Parsers and ASTs](2-parsers) : Due 13th Feb at 22:00.
+2 - [Parsers and ASTs](2-parsers) : Due 14th Feb at 22:00.
 
-2 - [Code Generation](3-codegen) : Due 27th Feb at 22:00.
+2 - [Code Generation](3-codegen) : Due 28th Feb at 22:00.
 
 The code for each exercise will be submitted via github,
 and the hash of the commit to be tested will be submitted
@@ -45,7 +45,7 @@ Assessment and Feedback
 =======================
 
 The intent is that the specifications are precise, so
-the marking will be quantitative, and feedback will 
+the marking will be quantitative, and feedback will
 largely be in terms of what works and what doesn't.
 The formal feedback should contain enough information
 to understand why specific parts don't work, in terms of
@@ -103,7 +103,7 @@ try to phrase things in terms of design choices.
 
 - Think through the choices again, particularly with
   hindsight.
-  
+
 - Discuss the choices with someone.
 
 As your programming ability improves, it becomes more
@@ -151,12 +151,12 @@ machine using Vagrant:
 
 - Wait: it will download the VM image, then install and configure
   the virtual machine
-  
+
 - `vagrant ssh`
 
 - `cd /vagrant` : This will put you in the same directory, with
   your host files shared with the VM.
-  
+
 You can then use command line build tools in the VM, while editing
 the source files in your host editor.
 
