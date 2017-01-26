@@ -1,3 +1,38 @@
+Informal pulls
+==============
+
+As noted in the lecture, I'll do some informal pulls so that people
+can get an idea about build or execution failures. These are not
+required deadlines, so don't worry if you don't have anything in
+(well, worry a bit).
+
+The proposed schedule is:
+- Thursday 26th, 22:00
+- Friday 27th, 22:00
+- Monday 30th, 22:00
+
+Some notes on these kinds of runs:
+
+- The hash will come out of blackboard in order to determine
+  which commit to test.
+
+- These are completely informal runs, and there is no particular
+  guarantee associated with exactly when they are run, or when you'll
+  get the results back. If the build system falls asleep, they won't
+  happen until the morning. The only point of putting times is to give
+  some idea of when things will be captured. 
+
+- There is not implication of promise this will happen for all labs.
+
+- No human will look at the output of these tests, unless the
+  recipient cares to look.
+
+- You may wish to subscribe to your repository (if you haven't
+  already), so that you'll see when content appears.
+
+Overview
+========
+
 This lab is primarily focussed on lexers
 and regular expressions. There are three components,
 each of which has a separate sub-directory. When
