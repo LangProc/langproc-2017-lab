@@ -17,6 +17,8 @@ constraints on the input language are:
 
   - Functions have one parameter, which _must_ be surrounded by
     parenthesis.
+    
+  - `exp` and `log` are both natural (base _e_).
 
 - _Numbers_ are expressed as decimal numbers. These must
   start with an integer digit, may have a fractional part,
