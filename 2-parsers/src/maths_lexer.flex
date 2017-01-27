@@ -23,7 +23,7 @@ sqrt            { return T_SQRT; }
 [-]?[0-9]+([.][0-9]*)? { yylval.number=strtod(yytext, 0); return T_NUMBER; }
 [a-z]+          { yylval.string=new std::string(yytext); return T_VARIABLE; }
 
-[ \t]+
+[ \t\r\n]+		{;}
 
 .               { fprintf(stderr, "Invalid token\n"); exit(1); }
 %%
