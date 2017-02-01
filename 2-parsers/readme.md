@@ -113,7 +113,6 @@ Given the input:
 ````
 7*x +5*
  -5 * y
-$
 ````
 the code should do the equivalent of:
 ````
@@ -144,7 +143,7 @@ Testing
 -------
 
 There is a script called `test_parser.sh`, which
-applies the tests used during assesment. During
+applies the tests used during assessment. During
 testing it will perform two tasks:
 
 - Check that the expressions in [test/valid_expressions.input.txt](test/valid_expressions.input.txt)
