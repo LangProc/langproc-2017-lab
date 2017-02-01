@@ -106,8 +106,34 @@ and the canonical printer will produce:
 ```
 $ bin/print_canonical
 7+8
+
 ( 7 + 8 )
 ```
+Note that the input `7+8` can be terminated by using
+`control+d` to indicate the [end of the input stream](https://en.wikipedia.org/wiki/End-of-Transmission_character).
+This will cause the pretty-printer (or any program) to conclude that no
+more input is going to arrive over `stdin`, and it should conclude its
+work. Until the parser knows that there is no more input, it can't
+return the AST, as if it sees the input `x`, it can't be sure it
+won't be followed by arbitrary numbers of `+x` which make the expression longer.
+
+When manually typing input the whitespace between input and output could
+vary while still being correct. So it could look like this:
+```
+$ bin/print_canonical
+7+8
+
+
+( 7 + 8 )
+```
+if you hit return twice before the stream ends, or like this:
+```
+$ bin/print_canonical
+7+8( 7 + 8 )
+```
+if you end the stream without pressing return. Generally you should
+use typed input as a debugging and exploration tool, and rely more on automated
+and repeatable tests from files for proper testing.
 
 Given the input:
 ````
@@ -135,6 +161,7 @@ and the canonical printer will produce:
 $ bin/print_canonical
 7*x +5*
  -5 * y
+ 
 ( ( 7 * x ) + ( ( 5 * -5 ) * y ) )
 $
 ````
@@ -193,6 +220,7 @@ Another example:
 ````
 $ bin/eval_expr a 4 b 7 c -3
 (c+7)*b+c
+
 25.000000
 ````
 
