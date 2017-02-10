@@ -193,7 +193,8 @@ pass in a map that gives bindings (numbers) for `x` and `y`.
 
 Currently `Expression::evaluate` throws an exception.
 Implement `evaluate` for the various parts of the AST,
-and complete the program called `src/eval_expr.cpp`. This should
+and give the source for a program called `src/eval_expr.cpp`, and
+which is built using `make bin/eval_expr`. This should
 take a list of variable bindings on the command line,
 where each binding is a variable and a number separated
 by spaces, then evaluate an expression read from `stdin`.
@@ -205,6 +206,7 @@ Example
 Assume we have the expression `x+6`, and want to evaluate
 it with `x=7`: The usage should be:
 ````
+$ make bin/eval_expr
 $ bin/eval_expr x 7
 x+6
 13.000000
@@ -233,8 +235,8 @@ which differentiates with respect to a value, and returns
 the derivative as a new tree. Currently this is not implemented
 and throws an exception.
 
-Implement differentiation for the AST, and create a new program
-called `diff_expr.cpp` that takes a set of one or more variables as
+Implement differentiation for the AST, and create the source for a new program
+called `src/diff_expr.cpp` that takes a set of one or more variables as
 input parameters, and differentiates the sequence with respect to each variable.
 The output should be a transformed expression that meets the
 specifications of the input language.
@@ -246,6 +248,7 @@ number of strings (why?)_
 
 For example:
 ````
+$ make bin/diff_expr
 $ bin/diff_expr x y x
 x*(x+2*y)*x/z*x + y *x
 12*x/z
