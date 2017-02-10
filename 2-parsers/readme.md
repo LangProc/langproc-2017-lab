@@ -235,7 +235,7 @@ which differentiates with respect to a value, and returns
 the derivative as a new tree. Currently this is not implemented
 and throws an exception.
 
-Implement differentiation for the AST, and create the source for a new program
+Implement differentiation for the AST, and create a new program
 called `src/diff_expr.cpp` that takes a set of one or more variables as
 input parameters, and differentiates the sequence with respect to each variable.
 The output should be a transformed expression that meets the
@@ -254,6 +254,9 @@ x*(x+2*y)*x/z*x + y *x
 12*x/z
 $
 ````
+
+No simplification of the output expressions is required, nor
+is it an error to (correctly) simplify the results.
 
 Submission
 ==========
