@@ -66,6 +66,10 @@ Input programs can contain the following constructs:
   Reads an integer from the input stream of numbers and returns it. Note that it
   is not an variable because it is not lower-case.
   
+- Param : `Param : I`
+
+  Return the input parameter with index I.
+  
 - Output: `Output [ X ]`
 
   Evaluate X, then send the result to output. The return value
