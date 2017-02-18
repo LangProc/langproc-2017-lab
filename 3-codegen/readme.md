@@ -58,7 +58,7 @@ Input programs can contain the following constructs:
 
 - Variable: `variable`
 
-  A variable matches the regeg `[a-z][a-z0-9]*. It returns the value of the variable,
+  A variable matches the regex `[a-z][a-z0-9]*. It returns the value of the variable,
   which must already have been given a value elsewhere in the program.
   
 - Input: `Input`
