@@ -33,6 +33,15 @@ The language has the feature that variables do not need to
 be declared, so the variable `x` is declared when it
 is first assigned.
 
+As a consequence of not requiring declarations, this language
+also only has a single global scope. So the variable `x` always
+refers to the same variable, no matter where it is used. This
+behaviour is chosen to make the problem simpler for the lab; obviously
+in C you'll need to manage different scopes in some way. (_Thanks
+to @lorenzo2897 for [pointing out](https://github.com/LangProc/langproc-2016-lab/issues/40) this
+wasn't explicit).
+
+
 Language Constructs
 -------------------
 
@@ -58,8 +67,10 @@ Input programs can contain the following constructs:
 
 - Variable: `variable`
 
-  A variable matches the regeg `[a-z][a-z0-9]*. It returns the value of the variable,
-  which must already have been given a value elsewhere in the program.
+  A variable matches the regex `[a-z][a-z0-9]*. It returns the value of the variable,
+  which must already have been given a value elsewhere in the program. All variables
+  appear at global scope, so a variable `x` will always refer to the same variable,
+  no matter where it appears.
   
 - Input: `Input`
 
