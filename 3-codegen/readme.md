@@ -568,7 +568,7 @@ $
 Some observations:
 
 - You'll need to use a MIPS toolchain to do some parts of it (e.g.
-  assembling and linking)
+  assembling and linking).
 
 - The MIPS executable will only run if you have QEMU installed (or
   you're on a MIPS machine!)
@@ -582,6 +582,11 @@ Some observations:
   constructs and types is much smaller than in C.
 
 - Generating MIPS assembly is not the only way of getting an executable...
+
+Both the MIPS toolchain and QEMU are installed by default in both
+the Lab Ubuntu setup and the Vagrant Ubuntu machine. If you are
+using another platform/OS you'll need to work out how to install
+them for your system.
 
 Submission
 ==========
