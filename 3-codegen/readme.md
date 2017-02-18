@@ -244,7 +244,9 @@ the implementation, based on the semantics given earlier.
 
 The test script `./test_interpreter.sh` applies the interpreter
 to a number of different input programs in `test/programs`, and
-checks that the outputs and results are correct.
+checks that the outputs and results are correct. Note that by
+default one of the tests [already passes](#43), as the skeleton
+interpreter already handles numbers.
 
 
 Basic Part 2 (30%): Code generation
