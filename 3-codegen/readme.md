@@ -490,28 +490,32 @@ So something like:
 SRCFILE=$1  # Program to optimise
 
 CHANGED=1;
-while [[ "$CHANGED" -ne 0 ]]; then
+while [[ "$CHANGED" -ne 0 ]]; do
   CHANGED=0;
 
   cat $SRCFILE | bin/constant_fold > $SRCFILE.tmp
-  if [[ "$?" -ne "0" ]]; then
+  if [[ "$?" -eq "0" ]]; then
     CHANGED=1;
   fi
   cp $SRCFILE.tmp $SRCFILE
   
   cat $SRCFILE | bin/dead_branch_removal > $SRCFILE.tmp
-  if [[ "$?" -ne "0" ]]; then
+  if [[ "$?" -eq "0" ]]; then
     CHANGED=1;
   fi
   cp $SRCFILE.tmp $SRCFILE
   
   cat $SRCFILE | bin/constant_propagation > $SRCFILE.tmp
-  if [[ "$?" -ne "0" ]]; then
+  if [[ "$?" -eq "0" ]]; then
     CHANGED=1;
   fi
   cp $SRCFILE.tmp $SRCFILE
 fi
 ```
+(Initial version was intended to be a sketch, rather than
+verbatim code; however, @fexter-svk [suggested changes](https://github.com/LangProc/langproc-2016-lab/issues/37) to
+make it executable.
+
 As long as the program keeps getting smaller, we might as
 well keep optimising it. A natural question is "what if we
 get stuck in an infinite loop?". Some reasoning suggests
