@@ -261,9 +261,9 @@ The supported assembly instructions are:
         
 - `lt dstReg srcRegA srcRegB` : If srcRegA < srcRegB, then dstReg=1, otherwise dstReg=0.
 
-- `beq dstReg srcRegA label` : If srcRegA == srcRegB, then jump to label.
+- `beq srcRegA srcRegB label` : If srcRegA == srcRegB, then jump to label.
 
-- `bne dstReg srcRegA label` : If srcRegA != srcRegB, then jump to label.
+- `bne srcRegA srcRegB label` : If srcRegA != srcRegB, then jump to label.
 
 - `halt srcReg` : Halt the program and return value in srcReg.
 
