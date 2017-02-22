@@ -280,6 +280,9 @@ The supported assembly instructions are:
 
 - `halt srcReg` : Halt the program and return value in srcReg.
 
+A limitation of the current VM is that labels and register names cannot be
+larger than 63 characters, and may [silently truncate off extra characters](https://github.com/LangProc/langproc-2016-lab/issues/47).
+
 The vm can be compiled with
 ````
 make bin/vm
