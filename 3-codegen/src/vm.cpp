@@ -325,7 +325,7 @@ public:
 
 void Context::add_instruction(const std::string &line)
 {
-    char arg1[17]={0}, arg2[17]={0}, arg3[17]={0};
+    char arg1[65]={0}, arg2[65]={0}, arg3[65]={0};
     int iarg;
 
     if(1==sscanf(line.c_str(), ":%[_a-zA-Z0-9]", arg1)){
@@ -333,25 +333,25 @@ void Context::add_instruction(const std::string &line)
             throw std::runtime_error(std::string("Duplicate label : '")+arg1+"'");
         }
         labels[arg1]=instructions.size();
-    }else if( 2==sscanf(line.c_str(), "const %16s %d", arg1, &iarg)) {
+    }else if( 2==sscanf(line.c_str(), "const %64s %d", arg1, &iarg)) {
         instructions.push_back(std::make_shared<ConstInstruction>(instructions.size(), line, arg1, iarg));
-    }else if( 1==sscanf(line.c_str(), "input %16s", arg1)) {
+    }else if( 1==sscanf(line.c_str(), "input %64s", arg1)) {
         instructions.push_back(std::make_shared<InputInstruction>(instructions.size(),line, arg1));
-    }else if( 2==sscanf(line.c_str(), "param %16s %d", arg1, &iarg)) {
+    }else if( 2==sscanf(line.c_str(), "param %64s %d", arg1, &iarg)) {
         instructions.push_back(std::make_shared<ParamInstruction>(instructions.size(),line, arg1, iarg));
-    }else if( 1==sscanf(line.c_str(), "output %16s", arg1)) {
+    }else if( 1==sscanf(line.c_str(), "output %64s", arg1)) {
         instructions.push_back(std::make_shared<OutputInstruction>(instructions.size(),line, arg1));
-    }else if( 3==sscanf(line.c_str(), "add %16s %16s %16s", arg1, arg2, arg3)) {
+    }else if( 3==sscanf(line.c_str(), "add %64s %64s %64s", arg1, arg2, arg3)) {
         instructions.push_back(std::make_shared<AddInstruction>(instructions.size(),line, arg1, arg2, arg3));
-    }else if( 3==sscanf(line.c_str(), "sub %16s %16s %16s", arg1, arg2, arg3)) {
+    }else if( 3==sscanf(line.c_str(), "sub %64s %64s %64s", arg1, arg2, arg3)) {
         instructions.push_back(std::make_shared<SubInstruction>(instructions.size(),line, arg1, arg2, arg3));
-    }else if( 3==sscanf(line.c_str(), "lt %16s %16s %16s", arg1, arg2, arg3)) {
+    }else if( 3==sscanf(line.c_str(), "lt %64s %64s %64s", arg1, arg2, arg3)) {
         instructions.push_back(std::make_shared<LessThanInstruction>(instructions.size(),line, arg1, arg2, arg3));
-    }else if( 3==sscanf(line.c_str(), "beq %16s %16s %16s", arg1, arg2, arg3)) {
+    }else if( 3==sscanf(line.c_str(), "beq %64s %64s %64s", arg1, arg2, arg3)) {
         instructions.push_back(std::make_shared<BranchEqualsInstruction>(instructions.size(),line, arg1, arg2, arg3));
-    }else if( 3==sscanf(line.c_str(), "bne %16s %16s %16s", arg1, arg2, arg3)) {
+    }else if( 3==sscanf(line.c_str(), "bne %64s %64s %64s", arg1, arg2, arg3)) {
         instructions.push_back(std::make_shared<BranchNotEqualsInstruction>(instructions.size(),line, arg1, arg2, arg3));     
-    }else if( 1==sscanf(line.c_str(), "halt %16s", arg1)) {
+    }else if( 1==sscanf(line.c_str(), "halt %64s", arg1)) {
         instructions.push_back(std::make_shared<HaltInstruction>(instructions.size(),line, arg1));
     
     }else{
