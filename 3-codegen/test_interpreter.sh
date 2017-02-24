@@ -73,7 +73,7 @@ for i in test/programs/*; do
         OK=1;
     fi
 
-    GOT_OUTPT=$(echo $(cat working/$b/got.output.txt | ${DOS2UNIX} ))
+    GOT_OUTPUT=$(echo $(cat working/$b/got.output.txt | ${DOS2UNIX} ))
     REF_OUTPUT=$(echo $(cat $i/ref.output.txt | ${DOS2UNIX} ))
 
     if [[ "${GOT_OUTPUT}" != "${REF_OUTPUT}" ]]; then
