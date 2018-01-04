@@ -244,9 +244,10 @@ The output would be:
 
 There is also a test-bench included, which is a partial
 set of test vectors for the program. Passing these tests
-is equivalent to achieving 60% in the final assesment,
-with unseen tests covering the remaining 40%.
-The components are:
+is equivalent to achieving 50% in the final assesment,
+with unseen tests covering the remaining 50%.
+
+The components of the test are:
 
 - [test/in](test/in) : A set of input test files of increasing complexity.
   Notice that it tries to test for specific circumstances and possible failure

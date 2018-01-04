@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     
     // Grab the pairs of bindings from argv
     for(int i=1; i<argc-1 ; i+=2){
-        bindings.insert( argv[i], strtod(argv[i+1],0)  );
+        bindings.insert( std::make_pair( argv[i], strtod(argv[i+1],0) )  );
     }
     
     // Parse the AST
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     double res=ast->evaluate(bindings);
     
     // Print it out
-    std::cout << std::fixed << std::setprecision(6) << std::endl;
+    std::cout << std::fixed << std::setprecision(6) << res << std::endl;
 
     return 0;
 }

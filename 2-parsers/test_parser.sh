@@ -27,7 +27,7 @@ echo "========================================"
 echo " Cleaning the temporaries and outputs"
 make clean
 echo " Force building bin/print_canonical"
-make bin/print_canonical -B
+make bin/print_canonical bin/eval_expr -B
 if [[ "$?" -ne 0 ]]; then
     echo "Build failed.";
 fi
@@ -58,8 +58,8 @@ while IFS=, read -r INPUT_LINE REF_LINE BINDINGS REF_VALUE; do
 
     echo ""
     echo "Evaluating with : $BINDINGS"
-    GOT_VALUE=$( echo -n "${INPUT_LINE}" | bin/print_canonical ${BINDINGS} )
-    echo "Value : ${GOT_LINE}"
+    GOT_VALUE=$( echo -n "${INPUT_LINE}" | bin/eval_expr ${BINDINGS} )
+    echo "Value : ${GOT_VALUE}"
     if [[ "${GOT_VALUE}" != "${REF_VALUE}" ]]; then
         echo ""
         echo "ERROR"        

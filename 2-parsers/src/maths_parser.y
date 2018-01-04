@@ -20,7 +20,7 @@
   std::string *string;
 }
 
-%token T_TIMES T_PLUS T_EXPONENT
+%token T_TIMES T_DIVIDE T_PLUS T_MINUS T_EXPONENT
 %token T_LBRACKET T_RBRACKET
 %token T_LOG T_EXP T_SQRT
 %token T_NUMBER T_VARIABLE

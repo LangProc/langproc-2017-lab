@@ -8,7 +8,7 @@ You will parse and build the AST for standard
 maths notation over double-precision numbers. The
 constraints on the input language are:
 
-- _Operators_ to be supported are `+`, `*`, and `^` (exponentiation).
+- _Operators_ to be supported are `+`, `-`, `*`, `/`, and `^` (exponentiation).
 
 - Operators follow [standard mathematical precedence](https://en.wikipedia.org/wiki/Order_of_operations).
 

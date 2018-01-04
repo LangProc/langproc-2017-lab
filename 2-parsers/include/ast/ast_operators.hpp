@@ -57,6 +57,25 @@ public:
     }
 };
 
+class SubOperator
+    : public Operator
+{
+protected:
+    virtual const char *getOpcode() const override
+    { return "-"; }
+public:
+    SubOperator(ExpressionPtr _left, ExpressionPtr _right)
+        : Operator(_left, _right)
+    {}
+    
+    virtual double evaluate(
+        const std::map<std::string,double> &bindings
+    ) const override 
+    {
+        throw std::runtime_error("MulOperator::evaluate is not implemented.");
+    }
+};
+
 
 class MulOperator
     : public Operator
@@ -74,6 +93,25 @@ public:
     ) const override
     {
         throw std::runtime_error("MulOperator::evaluate is not implemented.");
+    }
+};
+
+class DivOperator
+    : public Operator
+{
+protected:
+    virtual const char *getOpcode() const override
+    { return "/"; }
+public:
+    DivOperator(ExpressionPtr _left, ExpressionPtr _right)
+        : Operator(_left, _right)
+    {}
+
+    virtual double evaluate(
+        const std::map<std::string,double> &bindings
+    ) const override
+    {
+        throw std::runtime_error("DivOperator::evaluate is not implemented.");
     }
 };
 
