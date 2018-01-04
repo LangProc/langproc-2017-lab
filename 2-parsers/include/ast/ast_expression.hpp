@@ -9,9 +9,6 @@
 
 class Expression;
 
-// We will use "smart pointers". These will automatically
-// free the pointed to object when there are no longer any
-// pointers to that object.
 typedef const Expression *ExpressionPtr;
 
 class Expression
