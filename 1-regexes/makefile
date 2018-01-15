@@ -1,4 +1,7 @@
-CPPFLAGS += -W -Wall -g -std=c++11
+CPPFLAGS += -W -Wall -g 
+
+# This avoids error: ‘fileno’ was not declared in this scope
+CPPFLAGS += -std=c++0x
 
 all : histogram
 
