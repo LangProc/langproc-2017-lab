@@ -3,6 +3,9 @@ CPPFLAGS += -W -Wall -g
 # This avoids error: ‘fileno’ was not declared in this scope
 CPPFLAGS += -std=c++0x
 
+# Avoid warnings about yyunput not used
+CPPFLAGS += -Wno-unused-function
+
 all : histogram
 
 histogram_lexer.yy.cpp : histogram_lexer.flex
