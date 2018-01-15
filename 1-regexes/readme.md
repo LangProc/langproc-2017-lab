@@ -221,7 +221,7 @@ abc 40 xyz 1 xyz -2
 The output would be:
 ````
 39.000
-[abs] 1
+[abc] 1
 [xyz] 2
 ````
 
