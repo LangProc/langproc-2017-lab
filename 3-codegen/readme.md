@@ -75,7 +75,7 @@ Input programs can contain the following constructs:
 - Input: `Input`
 
   Reads an integer from the input stream of numbers and returns it. Note that it
-  is not an variable because it is not lower-case.
+  is not a variable because it is not lower-case.
   
 - Param : `Param : I`
 
@@ -181,7 +181,7 @@ This representation is similar to the approach taken in
 JSON or XML, where there is a general-purpose heirarchical data-structure,
 then meaning is imposed onto it at a higher level. In this
 case, there are many ASTs which are syntactically correct,
-but not match the grammar of the language constructs.
+but do not match the grammar of the language constructs.
 This approach is also taken
 in [homoiconic](https://en.wikipedia.org/wiki/Homoiconicity) languages,
 such as Lisp, Clojure and Julia, where code-is-data-is-code.

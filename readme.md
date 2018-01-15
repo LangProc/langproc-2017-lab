@@ -1,4 +1,4 @@
-Lab exercises for Language Processors 2016/2017
+Lab exercises for Language Processors 2017/2018
 ===============================================
 
 This repository contains the specification for
@@ -6,36 +6,19 @@ the three lab exercises for Language Processors.
 The three exercises are equally weighted, and
 are worth 33.3% of your computing lab mark.
 
-Each exercise is structured as:
-
-- Basic (60%) : An exercises that is relatively
-  easy, using an existing code structure. There
-  is a full test-bench included, which will also
-  be used for assesment.
-
-- Intermediate (20%) : Slightly more challenging
-  exercises, with less support in terms of skeleton
-  code and prompts. These are not designed to be
-  "hard" as such, just to require a bit more thinking
-  and independent work.
-
-- Advanced (20%) : A more complicated part which is
-  mainly for those wishing to challenge themselves.
-
 The primary purpose of the lab sessions is to ensure
 that everyone learns the basic skills needed for the
-coursework. The intermediate and advanced parts are
-more for guided self-study - expect to have conversations
-and discussions with the lab helpers about them. There
-is no fixed answer, so they can't tell you want it is.
+coursework. They are not designed to be challenging,
+but they do require you to get to grips with a number
+of tools and concepts that you will need later.
 
 The three exercises are:
 
-1 - [Lexers and regular expressions](1-regexes) : Due 31st Jan at 22:00.
+1 - [Lexers and regular expressions](1-regexes) : Due Tue 30th Jan at 22:00.
 
-2 - [Parsers and ASTs](2-parsers) : Due 14th Feb at 22:00.
+2 - [Parsers and ASTs](2-parsers) : Due 13th Feb at 22:00.
 
-2 - [Code Generation](3-codegen) : Due 28th Feb at 22:00.
+2 - [Code Generation](3-codegen) : Due 27th Feb at 22:00.
 
 The code for each exercise will be submitted via github,
 and the hash of the commit to be tested will be submitted
@@ -53,7 +36,7 @@ inputs and the resulting errors, and why you got the mark you got.
 
 This is all "normal" coursework, so the expectation
 is that you'll be getting all feedback within 10
-working days (hopefully well before). As a consequence,
+working days (hopefully before...). As a consequence,
 there will be no manual intervention in submitted
 code - it is up to you to make sure it compiles and
 runs!
@@ -126,10 +109,9 @@ Environment
 ===========
 
 The target environment for this lab (and the coursework)
-is Ubuntu 16.04, which is the same as the lab machines.
-It is strongly suggested that you do your final testing
-before each submission in the same environment, otherwise
-you are likely to hit incompatibility problems, which
+is Ubuntu 16.04. It is strongly suggested that you do your
+final testing before each submission in the same environment,
+otherwise you are likely to hit incompatibility problems, which
 may mean your program won't build. Those on OSX should
 watch out in particular, as the build environment is
 often subtly different.

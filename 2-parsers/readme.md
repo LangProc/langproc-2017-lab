@@ -87,7 +87,7 @@ Your parser should complete the implemention of the function:
 ````
 const Expression *parseAST();
 ````
-which is declared in `ast_.hpp`, and defined in `parser.y`. This will parse the
+which is declared in `ast.hpp`, and defined in `parser.y`. This will parse the
 input from `stdin` (the default source for Flex, which is providing tokens to
 Bison), then return the AST.
 
@@ -131,7 +131,7 @@ work. Until the parser knows that there is no more input, it can't
 return the AST, as if it sees the input `x`, it can't be sure it
 won't be followed by arbitrary numbers of `+x` which make the expression longer.
 
-When manually typing input the whitespace between input and output could
+When manually typing input, the whitespace between input and output could
 vary while still being correct. So it could look like this:
 ```
 $ bin/print_canonical
@@ -213,7 +213,7 @@ as output. The function is implemented for the primitive types (`Number` and `Va
 and for addition (`AddOperator`). You need to implement it for the remaining
 nodes.
 
-The is a driver program called `src/eval_expr.cpp`,
+There is a driver program called `src/eval_expr.cpp`,
 which is built using `make bin/eval_expr`. This takes a
 list of variable bindings on the command line,
 where each binding is a variable and a number separated
@@ -245,15 +245,16 @@ $ bin/eval_expr a 4 b 7 c -3
 ````
 
 A set of test vectors is supplied, which checks that both
-the parsing and functionality is correct. These can be run using:
+the parsing and functionality is correct. These are also run using:
 ```
 ./test_parser.sh
 ```
-Passing all tests is worth 50% of the marks, with the remaining
-marks coming from unseen test-cases.
 
 Submission
 ==========
+
+Passing all given tests is worth 50% of the marks, with the remaining
+marks coming from unseen test-cases.
 
 As before ensure you have committed your code, then do
 a full test. Then push your code to your private github

@@ -1,15 +1,13 @@
 Informal pulls
 ==============
 
-As noted in the lecture, I'll do some informal pulls so that people
-can get an idea about build or execution failures. These are not
-required deadlines, so don't worry if you don't have anything in
-(well, worry a bit).
+We'll do some informal pulls so that people can get an idea about
+build or execution failures. These are not required deadlines,
+so don't worry if you don't have anything in (well, worry a bit).
 
 The proposed schedule is:
-- Thursday 26th, 22:00
-- Friday 27th, 22:00
-- Monday 30th, 22:00
+- Wednesday 24th, 22:00
+- Friday 26th, 22:00
 
 Some notes on these kinds of runs:
 
@@ -44,7 +42,8 @@ Get the local working copy of your private repository:
 ````
 git clone https://github.com/LangProc/langproc-2017-lab-${LOGIN}.git
 ````
-You'll need to type in your github credentials to authenticate.
+You'll need to type in your github credentials to authenticate, unless
+you've set up SSH authentication.
 
 Move into the working directory:
 ````
@@ -169,7 +168,7 @@ For our purposes we'll define words and numbers as:
   include the surrounding `[` or `]` characters. It is illegal for
   such a sequence to span a new-line.
 
-- A number can be expressed as an _decimal_ or as a _fraction_.
+- A number can be expressed as a _decimal_ or as a _fraction_.
 
 - An integer is a contiguous sequence of decimal digits, preceded
   by an optional `-` sign, and optionally followed by a `.` sign and
@@ -222,8 +221,8 @@ abc 40 xyz 1 xyz -2
 The output would be:
 ````
 39.000
-[xyz] 2
 [abs] 1
+[xyz] 2
 ````
 
 Given the input:
@@ -235,11 +234,11 @@ The output would be:
 ````
 -6866.500
 [  x] 1
-[a] 3
 [aa] 1
 [for] 1
 [while] 1
 [x] 1
+[a] 3
 ````
 
 There is also a test-bench included, which is a partial
