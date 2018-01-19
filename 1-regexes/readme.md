@@ -179,6 +179,10 @@ For our purposes we'll define words and numbers as:
   of decimal digits, a `/` sign, and another sequence of decimal
   digits. It should be interpreted by converting the two digits sequences
   as decimal integers, then taking the ratio using double-precision.
+  
+- Fractions with [zero denominators](https://github.com/LangProc/langproc-2017-lab/issues/55)
+  are illegal, so implementations can handle them however is convenient,
+  and they will not appear in any test inputs (thanks to @VasiliosRallis).
 
 - If a sequence of characters could be interpreted as an decimal
   or a fraction, then fraction should have precedence.
