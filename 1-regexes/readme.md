@@ -170,7 +170,7 @@ For our purposes we'll define words and numbers as:
 
 - A number can be expressed as a _decimal_ or as a _fraction_.
 
-- An integer is a contiguous sequence of decimal digits, preceded
+- An decimal is a contiguous sequence of decimal digits, preceded
   by an optional `-` sign, and optionally followed by a `.` sign and
   zero or more decimal digits  It should be interpreted as a decimal
   double-precision number.
@@ -180,7 +180,7 @@ For our purposes we'll define words and numbers as:
   digits. It should be interpreted by converting the two digits sequences
   as decimal integers, then taking the ratio using double-precision.
 
-- If a sequence of characters could be interpreted as an integer
+- If a sequence of characters could be interpreted as an decimal
   or a fraction, then fraction should have precedence.
 
 All other characters should not be counted (and should not
