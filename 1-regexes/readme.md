@@ -198,7 +198,8 @@ The output should be:
 - A sequence of lines for each element in the dictionary,
   containing the word surrounded by square brackets, a space, then the decimal count.
   The lines should be sorted:
-  - primary sort order: the number of times it occurs, from least to most.
+  - primary sort order: the number of times it occurs, from most to least (_note: originally
+    this text did not match the code - thanks to @patrickjohncyh for [pointing this out](https://github.com/LangProc/langproc-2017-lab/issues/55)_).
   - secondary sort order: [lexicographic order](https://en.wikipedia.org/wiki/Lexicographical_order)
     of the words (this is just "normal" sorting of strings).
 
