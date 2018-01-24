@@ -226,8 +226,8 @@ abc 40 xyz 1 xyz -2
 The output would be:
 ````
 39.000
-[abc] 1
 [xyz] 2
+[abc] 1
 ````
 
 Given the input:
@@ -238,12 +238,12 @@ a a a aa -67 1/2  -80 -6780.0  64/8 for while
 The output would be:
 ````
 -6866.500
+[a] 3
 [  x] 1
 [aa] 1
 [for] 1
 [while] 1
 [x] 1
-[a] 3
 ````
 
 There is also a test-bench included, which is a partial
