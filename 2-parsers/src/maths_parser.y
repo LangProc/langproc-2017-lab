@@ -33,15 +33,29 @@
 
 %%
 
+/* The TODO notes a are just a guide, and are non-exhaustive.
+   The expectation is that you do each one, then compile and test.
+   Testing should be done using patterns that target the specific
+   feature; the testbench is there to make sure that you haven't
+   broken anything while you added it.
+*/
+
 ROOT : EXPR { g_root = $1; }
 
+/* TODO-3 : Add support for (x+6) and (10-y). You'll need to add production rules, and create an AddOperator or
+            SubOperator. */
 EXPR : TERM                 { $$ = $1; }
 
+/* TODO-4 : Add support (x*6) and (z/11). */
 TERM : FACTOR               { $$ = $1; }
 
-FACTOR : T_NUMBER           { /* TODO : uncomment this:   $$ = new Number( $1 ); */ }
+/* TODO-2 : Add a rule for variable, base on the pattern of number. */
+FACTOR : T_NUMBER           { /* TODO-1 : uncomment this:   $$ = new Number( $1 ); */ }
        | T_LBRACKET EXPR T_RBRACKET { $$ = $2; }
 
+/* TODO-5 : Add support log(x), by modifying the rule for FACTOR. */
+
+/* TODO-6 : Extend support to other functions. Requires modifications here, and to FACTOR. */
 FUNCTION_NAME : T_LOG { $$ = new std::string("log"); }
 
 %%
