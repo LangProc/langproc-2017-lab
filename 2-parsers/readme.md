@@ -1,3 +1,12 @@
+Informal Pulls
+==============
+
+I'll do a couple of informal pulls for sanity checking as before. The pattern
+is slightly different due to when I'm free:
+
+- Fri 9th at 9:00
+- Mon 12th at 22:00
+
 Parsing Maths
 =============
 
