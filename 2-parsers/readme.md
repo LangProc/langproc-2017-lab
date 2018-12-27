@@ -1,17 +1,20 @@
-Basic: Parsing Maths (60%)
-==========================
+Parsing Maths
+=============
+
+Language and AST Overview
+-------------------------
 
 You will parse and build the AST for standard
 maths notation over double-precision numbers. The
 constraints on the input language are:
 
-- _Operators_ to be supported are `+`, `-`, `*`, and `/`.
+- _Operators_ to be supported are `+`, `*`, and `^` (exponentiation).
 
-- Operators follow standard mathematical precedence.
+- Operators follow [standard mathematical precedence](https://en.wikipedia.org/wiki/Order_of_operations).
 
-- Operators are left-associative.
+- Operators follow [standard mathematical associativity](https://en.wikipedia.org/wiki/Operator_associativity).
 
-- Brackets `(` and `)` can be used to override [operator precedence](https://en.wikipedia.org/wiki/Order_of_operations).
+- Brackets `(` and `)` can be used to override [operator associativity and precedence](https://en.wikipedia.org/wiki/Order_of_operations).
 
 - _Functions_ to be supported are `sqrt`, `exp`, and `log`.
 
@@ -30,8 +33,8 @@ constraints on the input language are:
 - Apart from _operators_, _numbers_, _variables_, and _functions_,
   the only other characters will be white-space.
 
-Your task is to build an AST, with the AST definitions provided
-through [ast.hpp](include/ast.hpp). The classes are:
+The AST is defined as a class heirarchy, spread across the
+following header files.
 
 - [`Expression`](include/ast/ast_expression.hpp) : Provides the
   base class for the AST.
@@ -43,7 +46,7 @@ through [ast.hpp](include/ast.hpp). The classes are:
   for representing mathematical binary operators.
 
 - [`Function`](include/ast/ast_functions.hpp) : Sub-classes
-  for representing unary functions (`log`, `exp`, `sqrt`).
+  for representing unary functions (`log`, `exp`, ...).
 
 Some properties of the AST are:
 
@@ -51,7 +54,7 @@ Some properties of the AST are:
   to allocate a node representing 5.0, you would do:
 
   ````
-  const Expression *expr = new Number(5.0);
+  ExpressionPtr expr = new Number(5.0);
   ````
 
 - The AST is [immutable](https://en.wikipedia.org/wiki/Immutable_object), which
@@ -67,6 +70,18 @@ Some properties of the AST are:
   but means we can't share parts of the tree (For example, when rewriting
   a tree, we can't have the new tree point to parts of the old tree that are
   the same).
+
+Your task
+---------  
+
+You have two tasks for this lab:
+
+- Complete the parser for building the AST
+
+- Complete the evaluation functions for evaluating the expression with a given set of inputs
+
+Task: Parsing
+=============
 
 Your parser should complete the implemention of the function:
 ````
@@ -86,7 +101,6 @@ they should print to the same string. Here that is true _except_ for the floatin
 values, which are not printed to full precision. So for example, we might
 find that two expressions print to `( 4.1 + x )` and `( 4.1 + x )`, but one expression
 might be `(4.99999999 + x)`, and the other could be `(4.1000000001 + x)`.
-
 
 Examples
 --------
@@ -181,8 +195,8 @@ testing it will perform two tasks:
   are rejected by the parser.
 
 
-Intermediate: Evaluation (20%)
-==============================
+Task: Evaluation
+================
 
 The AST defines a function `Expression::evaluate`, which
 takes a set of _variable bindings_, and evaluates
@@ -191,20 +205,25 @@ from a variable name to a number: if we want to
 evaluate the expression `x+y`, we would need to
 pass in a map that gives bindings (numbers) for `x` and `y`.
 
-Currently `Expression::evaluate` throws an exception.
-Implement `evaluate` for the various parts of the AST,
-and give the source for a program called `src/eval_expr.cpp`, and
-which is built using `make bin/eval_expr`. This should
-take a list of variable bindings on the command line,
+### Evaluation
+
+There is a virtual function called `Expression::evaluate`, which takes a mapping
+from variable names to numeric values as input, and produces the numeric value of the expression
+as output. The function is implemented for the primitive types (`Number` and `Variable`),
+and for addition (`AddOperator`). You need to implement it for the remaining
+nodes.
+
+The is a driver program called `src/eval_expr.cpp`,
+which is built using `make bin/eval_expr`. This takes a
+list of variable bindings on the command line,
 where each binding is a variable and a number separated
-by spaces, then evaluate an expression read from `stdin`.
-The output should be written to 6 decimal digits.
+by spaces, then evaluates an expression read from `stdin`.
 
 Example
 -------
 
 Assume we have the expression `x+6`, and want to evaluate
-it with `x=7`: The usage should be:
+it with `x=7`: The usage is:
 ````
 $ make bin/eval_expr
 $ bin/eval_expr x 7
@@ -222,41 +241,16 @@ Another example:
 ````
 $ bin/eval_expr a 4 b 7 c -3
 (c+7)*b+c
-
 25.000000
 ````
 
-Advanced: Differentiation (20%)
-===================================
-
-The AST can be transformed into other ASTs by analysing
-the tree. There is a function called `Expression::differentiate`,
-which differentiates with respect to a value, and returns
-the derivative as a new tree. Currently this is not implemented
-and throws an exception.
-
-Implement differentiation for the AST, and create a new program
-called `src/diff_expr.cpp` that takes a set of one or more variables as
-input parameters, and differentiates the sequence with respect to each variable.
-The output should be a transformed expression that meets the
-specifications of the input language.
-
-_Note that this program does not have a unique correct output.
-There are an infinite number of correct ASTs that are equivalent
-(why?), and any one of them could be output as an infinite
-number of strings (why?)_
-
-For example:
-````
-$ make bin/diff_expr
-$ bin/diff_expr x y x
-x*(x+2*y)*x/z*x + y *x
-12*x/z
-$
-````
-
-No simplification of the output expressions is required, nor
-is it an error to (correctly) simplify the results.
+A set of test vectors is supplied, which checks that both
+the parsing and functionality is correct. These can be run using:
+```
+./test_parser.sh
+```
+Passing all tests is worth 50% of the marks, with the remaining
+marks coming from unseen test-cases.
 
 Submission
 ==========

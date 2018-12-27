@@ -4,8 +4,3 @@ Ax
 -
 +
 log(log)
-sqrt(--10)
--exp(x+x)
-x - - x
-x-1
-x -1

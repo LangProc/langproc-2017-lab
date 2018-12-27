@@ -20,7 +20,10 @@
   std::string *string;
 }
 
-%token T_TIMES T_PLUS T_DIVIDE T_MINUS T_LBRACKET T_RBRACKET T_LOG T_EXP T_SQRT T_NUMBER T_VARIABLE
+%token T_TIMES T_PLUS T_EXPONENT
+%token T_LBRACKET T_RBRACKET
+%token T_LOG T_EXP T_SQRT
+%token T_NUMBER T_VARIABLE
 
 %type <expr> EXPR TERM FACTOR
 %type <number> T_NUMBER
@@ -36,7 +39,7 @@ EXPR : TERM                 { $$ = $1; }
 
 TERM : FACTOR               { $$ = $1; }
 
-FACTOR : T_NUMBER           { $$ = new Number( $1 ); }
+FACTOR : T_NUMBER           { /* TODO : uncomment this:   $$ = new Number( $1 ); */ }
        | T_LBRACKET EXPR T_RBRACKET { $$ = $2; }
 
 FUNCTION_NAME : T_LOG { $$ = new std::string("log"); }

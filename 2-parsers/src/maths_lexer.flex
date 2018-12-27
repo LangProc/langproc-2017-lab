@@ -1,7 +1,7 @@
 %option noyywrap
 
 %{
-// Avoid error "error: ‘fileno’ was not declared in this scope"
+// Avoid error "error: `fileno' was not declared in this scope"
 extern "C" int fileno(FILE *stream);
 
 #include "maths_parser.tab.hpp"
@@ -10,8 +10,7 @@ extern "C" int fileno(FILE *stream);
 %%
 [*]             { return T_TIMES; }
 [+]             { return T_PLUS; }
-[/]             { return T_DIVIDE; }
-[-]             { return T_MINUS; }
+[\^]             { return T_EXPONENT; }
 
 [(]             { return T_LBRACKET; }
 [)]             { return T_RBRACKET; }

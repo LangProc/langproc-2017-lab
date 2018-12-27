@@ -6,16 +6,19 @@ int main(int argc, char *argv[])
 {
     std::map<std::string,double> bindings;
     
-    // TODO : for each pair of arguments:
-    //  - read the variable name
-    //  - parse the value
-    //  - insert into the bindings map
+    // Grab the pairs of bindings from argv
+    for(int i=1; i<argc-1 ; i+=2){
+        bindings.insert( argv[i], strtod(argv[i+1],0)  );
+    }
     
+    // Parse the AST
     const Expression *ast=parseAST();
     
+    // evaluate it with the bindings given
     double res=ast->evaluate(bindings);
     
-    // TODO : print out with 6 decimal digits of precision
-    
+    // Print it out
+    std::cout << std::fixed << std::setprecision(6) << std::endl;
+
     return 0;
 }

@@ -7,39 +7,32 @@
 class Operator
     : public Expression
 {
-private:
-    const Expression *left;
-    const Expression *right;
 protected:
-    Operator(const Expression *_left, const Expression *_right)
+    ExpressionPtr left;
+    ExpressionPtr right;
+
+    Operator(ExpressionPtr _left, ExpressionPtr _right)
         : left(_left)
         , right(_right)
     {}
 public:
-
-    virtual ~Operator()
-    {
-        delete left;
-        delete right;
-    }
-
     virtual const char *getOpcode() const =0;
 
-    const Expression *getLeft() const
+    ExpressionPtr getLeft() const
     { return left; }
 
-    const Expression *getRight() const
+    ExpressionPtr getRight() const
     { return right; }
 
-    virtual void print() const override
+    virtual void print(std::ostream &dst) const override
     {
-        std::cout<<"( ";
-        left->print();
-        std::cout<<" ";
-        std::cout<<getOpcode();
-        std::cout<<" ";
-        right->print();
-        std::cout<<" )";
+        dst<<"( ";
+        left->print(dst);
+        dst<<" ";
+        dst<<getOpcode();
+        dst<<" ";
+        right->print(dst);
+        dst<<" )";
     }
 };
 
@@ -50,24 +43,20 @@ protected:
     virtual const char *getOpcode() const override
     { return "+"; }
 public:
-    AddOperator(const Expression *_left, const Expression *_right)
+    AddOperator(ExpressionPtr _left, ExpressionPtr _right)
         : Operator(_left, _right)
     {}
     
+    virtual double evaluate(
+        const std::map<std::string,double> &bindings
+    ) const override 
+    {
+        double vl=left->evaluate(bindings);
+        double vr=right->evaluate(bindings);
+        return vl+vr;
+    }
 };
 
-class SubOperator
-    : public Operator
-{
-protected:
-    virtual const char *getOpcode() const override
-    { return "-"; }
-public:
-    SubOperator(const Expression *_left, const Expression *_right)
-        : Operator(_left, _right)
-    {}
-    
-};
 
 class MulOperator
     : public Operator
@@ -76,23 +65,36 @@ protected:
     virtual const char *getOpcode() const override
     { return "*"; }
 public:
-    MulOperator(const Expression *_left, const Expression *_right)
+    MulOperator(ExpressionPtr _left, ExpressionPtr _right)
         : Operator(_left, _right)
     {}
-    
+
+    virtual double evaluate(
+        const std::map<std::string,double> &bindings
+    ) const override
+    {
+        throw std::runtime_error("MulOperator::evaluate is not implemented.");
+    }
 };
 
-class DivOperator
+class ExpOperator
     : public Operator
 {
 protected:
     virtual const char *getOpcode() const override
-    { return "/"; }
+    { return "^"; }
 public:
-    DivOperator(const Expression *_left, const Expression *_right)
+    ExpOperator(ExpressionPtr _left, ExpressionPtr _right)
         : Operator(_left, _right)
     {}
-    
+
+    virtual double evaluate(
+        const std::map<std::string,double> &bindings
+    ) const override
+    {
+        throw std::runtime_error("ExpOperator::evaluate is not implemented.");
+    }
 };
+
 
 #endif

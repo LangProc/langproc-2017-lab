@@ -42,24 +42,40 @@ CHECKED=0
 if [[ -f test/valid_expressions.got.txt ]]; then
     rm test/valid_expressions.got.txt
 fi
-while IFS=, read -r INPUT_LINE REF_LINE; do
+while IFS=, read -r INPUT_LINE REF_LINE BINDINGS REF_VALUE; do
     echo "==========================="
     echo ""
     echo "Input : ${INPUT_LINE}"
     GOT_LINE=$( echo -n "${INPUT_LINE}" | bin/print_canonical )
     echo "Output : ${GOT_LINE}"
-    echo "${INPUT_LINE},${GOT_LINE}" >> test/valid_expressions.got.txt
     if [[ "${GOT_LINE}" != "${REF_LINE}" ]]; then
+        echo ""
         echo "ERROR"
     else
         PASSED=$(( ${PASSED}+1 ));
     fi
     CHECKED=$(( ${CHECKED}+1 ));
+
+    echo ""
+    echo "Evaluating with : $BINDINGS"
+    GOT_VALUE=$( echo -n "${INPUT_LINE}" | bin/print_canonical ${BINDINGS} )
+    echo "Value : ${GOT_LINE}"
+    if [[ "${GOT_VALUE}" != "${REF_VALUE}" ]]; then
+        echo ""
+        echo "ERROR"        
+    else
+        PASSED=$(( ${PASSED}+1 ));
+    fi
+    CHECKED=$(( ${CHECKED}+1 ));
+    
+    echo "${INPUT_LINE},${GOT_LINE},${BINDINGS},${GOT_VALUE}" >> test/valid_expressions.got.txt
+
 done < <( cat test/valid_expressions.input.txt | ${DOS2UNIX})
 
 echo ""
-echo "========================================="
+echo "============================================"
 echo "Checking that bad expressions are not parsed"
+echo ""
 
 while IFS=, read -r INPUT_LINE; do
     # Strip carriage return if necessary (replace dos2unix)
@@ -70,18 +86,16 @@ while IFS=, read -r INPUT_LINE; do
     GOT_LINE=$( echo -n "${INPUT_LINE}" | bin/print_canonical )
     CODE=$?;
     echo "Output : ${GOT_LINE}"
-    echo "Exit code : ${CODE}"
     if [[ ${CODE} -eq "0" ]]; then
+        echo ""
         echo "ERROR"
-    else
-        PASSED=$(( ${PASSED}+1 ));
+        PASSED=$(( ${PASSED}-1 ));        
     fi
-    CHECKED=$(( ${CHECKED}+1 ));
 done < <( cat test/invalid_expressions.input.txt | ${DOS2UNIX} )
 
 
 echo "########################################"
-echo "Passed ${PASSED} out of ${CHECKED}".
+echo "Passed ${PASSED} out of ${CHECKED} checks".
 echo ""
 
 RELEASE=$(lsb_release -d)

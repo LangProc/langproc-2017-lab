@@ -17,11 +17,18 @@ public:
     const std::string getId() const
     { return id; }
 
-    virtual void print() const override
+    virtual void print(std::ostream &dst) const override
     {
-        std::cout<<id;
+        dst<<id;
     }
-    
+
+    virtual double evaluate(
+        const std::map<std::string,double> &bindings
+    ) const override
+    {
+        // If the binding does not exist, this will throw an error
+        return bindings.at(id);
+    }    
 };
 
 class Number
@@ -37,11 +44,17 @@ public:
     double getValue() const
     { return value; }
 
-    virtual void print() const override
+    virtual void print(std::ostream &dst) const override
     {
-        std::cout<<value;
+        dst<<value;
     }
-    
+
+    virtual double evaluate(
+        const std::map<std::string,double> &bindings
+    ) const override
+    {
+        return value;
+    }
 };
 
 
